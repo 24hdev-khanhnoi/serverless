@@ -95,7 +95,8 @@ Finish:
 - Create your AWS resources (DynamoDB Table,  S3 Bucket for File Uploads)
 Problem:
 You have attempted to create more buckets than allowed
-For information about how to increase your bucket limi
+For information about how to increase your bucket limit
+![alt text](images/19.png)
 
 
 
