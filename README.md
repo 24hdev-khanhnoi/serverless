@@ -1,3 +1,16 @@
+ Repo: https://github.com/24hdev-khanhnoi/serverless
+<br>
+#### Finish:
+- Setting up a Serverless app ( setup, deoloy helloworld,..)
+- Create your AWS resources (DynamoDB Table,  S3 Bucket for File Uploads)
+<br>
+#### Problem:
+You have attempted to create more buckets than allowed
+For information about how to increase your bucket limit
+![alt text](images/19.png)
+
+<hr>
+ 
  # Serverless Node.js Leaning 
 
  # Report
@@ -89,14 +102,6 @@ For information about how to increase your bucket limit
 <hr>
 
 
-Repo: https://github.com/24hdev-khanhnoi/serverless
-Finish:
-- Setting up a Serverless app ( setup, deoloy helloworld,..)
-- Create your AWS resources (DynamoDB Table,  S3 Bucket for File Uploads)
-Problem:
-You have attempted to create more buckets than allowed
-For information about how to increase your bucket limit
-![alt text](images/19.png)
 
 
 
