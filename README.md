@@ -2,14 +2,17 @@
 
 Repo: https://github.com/24hdev-khanhnoi/serverless
 <br>
+
 #### Finish:
 - Setting up a Serverless app ( setup, deoloy helloworld,..)
 - Create your AWS resources (DynamoDB Table,  S3 Bucket for File Uploads)
 <br>
+
 #### Problem:
 You have attempted to create more buckets than allowed
 For information about how to increase your bucket limit
 <br>
+
 ##### images
 
 
