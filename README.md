@@ -8,7 +8,7 @@
 You have attempted to create more buckets than allowed
 For information about how to increase your bucket limit
 <br>
-``` ```
+##### images
 ![alt text](images/19.png)
 
 <hr>
