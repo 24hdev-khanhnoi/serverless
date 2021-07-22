@@ -7,6 +7,7 @@ Repo: https://github.com/24hdev-khanhnoi/serverless
 - Setting up a Serverless app ( setup, deoloy helloworld,..)
 - Create your AWS resources (DynamoDB Table,  S3 Bucket for File Uploads)
 - Building a Serverless API (setup base, CRUD simple, deplpy,..)
+- Users and authentication (Cognito user pool, Cognito identity pool,...)
 <br>
 
 #### Problem:
@@ -174,6 +175,89 @@ Fix bằng cách formatcode ở các file đó
 ![alt text](images/40.png)
 ![alt text](images/41.png)
 ![alt text](images/42.png)
+
+#### Handling Auth in Serverless APIs
+
+![alt text](images/serverless-auth-api-architecture.png)
+
+#### Create a Cognito User Pool
+
+##### Create User Pool
+![alt text](images/43.png)
+![alt text](images/44.png)
+![alt text](images/45.png)
+![alt text](images/46.png)
+![alt text](images/47.png)
+![alt text](images/48.png)
+![alt text](images/49.png)
+
+##### Create App Client
+
+![alt text](images/50.png)
+![alt text](images/51.png)
+![alt text](images/52.png)
+
+
+##### Create Domain Name
+![alt text](images/53.png)
+
+#### Create a Cognito Test User
+
+
+
+##### Create User
+
+![alt text](images/56.png)
+
+![alt text](images/54.png)
+![alt text](images/55.png)
+![alt text](images/57.png)
+
+
+Sử dụng AWS CLI để đăng ký người dùng bằng email và mật khẩu của họ.
+
+```
+aws cognito-idp sign-up \
+  --region YOUR_COGNITO_REGION \
+  --client-id YOUR_COGNITO_APP_CLIENT_ID \
+  --username admin@example.com \
+  --password Passw0rd!
+```
+
+```
+aws cognito-idp sign-up \
+  --region us-east-2 \
+  --client-id 59j0tt0qci8dm9us7an226srsb \
+  --username nqkhanh1998@gmail.com \
+  --password Passw0rd!
+```
+
+Người dùng được tạo trong Cognito User Pool. Tuy nhiên, trước khi người dùng có thể xác thực với User Pool, tài khoản cần được xác minh. Hãy nhanh chóng xác minh người dùng bằng lệnh quản trị viên.
+
+
+```
+aws cognito-idp admin-confirm-sign-up \
+  --region YOUR_COGNITO_REGION \
+  --user-pool-id YOUR_COGNITO_USER_POOL_ID \
+  --username admin@example.com
+```
+
+```
+aws cognito-idp admin-confirm-sign-up \
+  --region us-east-2 \
+  --user-pool-id us-east-2_c7ZXkYHe7 \
+  --username nqkhanh1998@gmail.com
+```
+
+#### Create a Cognito Identity Pool
+
+##### Create Pool
+![alt text](images/58.png)
+![alt text](images/59.png)
+
+
+<hr>
+
 # Problem
 - 21/7 
 You have attempted to create more buckets than allowed
