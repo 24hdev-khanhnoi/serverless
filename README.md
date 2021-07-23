@@ -14,6 +14,10 @@ Repo: https://github.com/24hdev-khanhnoi/serverless
 - You have attempted to create more buckets than allowed
 For information about how to increase your bucket limit (Fix Done)
 - Eslint ( Fix Done)
+- { status: 403,
+  statusText: 'Forbidden',
+  data: { Message: 'User: arn:aws:sts::907468717626:assumed-role/Cognito_notesidentitypoolAuth_Role/CognitoIdentityCredentials is not authorized to perform: execute-api:Invoke on resource: arn:aws:execute-api:us-east-2:********7626:ux5xagukr9/prod/POST/notes' } }
+  => Fix Done ( many times)
 <br>
 
 ##### images
@@ -365,6 +369,7 @@ npx aws-api-gateway-cli-test \
 --path-template='/notes' \
 --method='POST' \
 --body='{"content":"hello world","attachment":"hello.jpg"}'
+```
 
 
 ```
@@ -389,8 +394,44 @@ npx aws-api-gateway-cli-test --username nqkhanh1998@gmail.com --password Passw0r
 
 ```
 
+#### Secrets and 3rd party APIs
+
+##### Setup a Stripe account
+
+![alt text](images/71.png)
 
 
+Publishable key
+
+```
+pk_test_51JGIzwH17OyaYCVZeBtrIxTaVrerIGiWCuchitszTBrqRzNttkvopc1eR0SzDxup2U9fr1jbq6hzgiu86RZTf9Dc00hotQq1Sp
+```
+
+Secret key
+
+```
+sk_test_51JGIzwH17OyaYCVZhlzrYo2vik3TSSFugQQTdCtCUX46O2m3c7nzfxHupDsZuJQeRI2XxRbR7sHWCyItTufLsxfJ007QaNC4FQ
+```
+
+![alt text](images/72.png)
+
+``` billing.js ```
+
+![alt text](images/73.png)
+
+
+
+``` storage ``` là số lượng ghi chú mà người dùng muốn lưu trữ trong tài khoản của mình. 
+Và  ``` source ``` là mã thông báo Stripe cho thẻ mà chúng tôi sẽ tính phí.
+
+
+```libs/billing-lib.js```
+
+![alt text](images/74.png)
+
+```serverless.yml```
+
+![alt text](images/75.png)
 
 
 
