@@ -8,6 +8,8 @@ Repo: https://github.com/24hdev-khanhnoi/serverless
 - Create your AWS resources (DynamoDB Table,  S3 Bucket for File Uploads)
 - Building a Serverless API (setup base, CRUD simple, deplpy,..)
 - Users and authentication (Cognito user pool, Cognito identity pool,...)
+- Secrets and 3rd party APIs ( stripe )
+- Serverless unit tests ( jest)
 <br>
 
 #### Problem:
@@ -17,7 +19,7 @@ For information about how to increase your bucket limit (Fix Done)
 - { status: 403,
   statusText: 'Forbidden',
   data: { Message: 'User: arn:aws:sts::907468717626:assumed-role/Cognito_notesidentitypoolAuth_Role/CognitoIdentityCredentials is not authorized to perform: execute-api:Invoke on resource: arn:aws:execute-api:us-east-2:********7626:ux5xagukr9/prod/POST/notes' } }
-  => Fix Done ( many times)
+  => Fix Done ( take times)
 <br>
 
 ##### images
@@ -433,6 +435,18 @@ Và  ``` source ``` là mã thông báo Stripe cho thẻ mà chúng tôi sẽ t�
 
 ![alt text](images/75.png)
 
+#### Load Secrets from .env
+
+![alt text](images/76.png)
+![alt text](images/77.png)
+
+![alt text](images/78.png)
+![alt text](images/79.png)
+#### Unit Tests in Serverless
+
+![alt text](images/80.png)
+![alt text](images/81.png)
+![alt text](images/82.png)
 
 
 
