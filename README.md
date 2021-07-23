@@ -176,6 +176,15 @@ Fix bằng cách formatcode ở các file đó
 ![alt text](images/41.png)
 ![alt text](images/42.png)
 
+```
+POST - https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod/notes
+  GET - https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod/notes/{id}
+  GET - https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod/notes
+  PUT - https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod/notes/{id}
+  DELETE - https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod/notes/{id}
+  GET - https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod/hello
+```
+
 #### Handling Auth in Serverless APIs
 
 ![alt text](images/serverless-auth-api-architecture.png)
@@ -256,7 +265,138 @@ aws cognito-idp admin-confirm-sign-up \
 ![alt text](images/59.png)
 
 
+- 23/7
+
+![alt text](images/60.png)
+![alt text](images/61.png)
+![alt text](images/62.png)
+![alt text](images/63.png)
+![alt text](images/63.png)
+![alt text](images/64.png)
+
+```
+YOUR_S3_UPLOADS_BUCKET_NAME  notes-app-uploads-kn
+YOUR_API_GATEWAY_ID jcentwq22d
+YOUR_API_GATEWAY_REGION us-east-2
+
+````
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "mobileanalytics:PutEvents",
+        "cognito-sync:*",
+        "cognito-identity:*"
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:*"
+      ],
+      "Resource": [
+        "arn:aws:s3:::notes-app-upload-kn/private/${cognito-identity.amazonaws.com:sub}/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "execute-api:Invoke"
+      ],
+      "Resource": [
+        "arn:aws:execute-api:us-east-1:*:jcentwq22d/*/*/*"
+      ]
+    }
+  ]
+}
+
+```
+
+
+
+#### Secure the APIs
+
+##### Serverless IAM Auth
+
+
+#### Test the APIs
+
+
+![alt text](images/65.png)
+
+##### Problem
+
+Lỗi 403 
+![alt text](images/66.png)
+
+
+Có vẻ như mình đã config khi create identity pool
+Fix bằng cách xoá identity pool cũ và lập cái mới
+Thì sẽ có lỗi là role cũ đã tồn tại. 3 cách
+1. đặt tên role mới ( VD thêm số 2 sau)
+2. Vô config role lại
+3. xoá role cũ đi
+
+Mình đã xoá role cũ đi 
+
+![alt text](images/69.png)
+![alt text](images/67.png)
+![alt text](images/68.png)
+![alt text](images/70.png)
+
+
+```
+npx aws-api-gateway-cli-test \
+--username='admin@example.com' \
+--password='Passw0rd!' \
+--user-pool-id='YOUR_COGNITO_USER_POOL_ID' \
+--app-client-id='YOUR_COGNITO_APP_CLIENT_ID' \
+--cognito-region='YOUR_COGNITO_REGION' \
+--identity-pool-id='YOUR_IDENTITY_POOL_ID' \
+--invoke-url='YOUR_API_GATEWAY_URL' \
+--api-gateway-region='YOUR_API_GATEWAY_REGION' \
+--path-template='/notes' \
+--method='POST' \
+--body='{"content":"hello world","attachment":"hello.jpg"}'
+
+
+```
+npx aws-api-gateway-cli-test \
+--username='nqkhanh1998@gmail.com' \
+--password='Passw0rd!' \
+--user-pool-id='us-east-2_c7ZXkYHe7' \
+--app-client-id='59j0tt0qci8dm9us7an226srsb' \
+--cognito-region='us-east-2' \
+--identity-pool-id='us-east-2:a2415eac-5c7c-45b4-bbc0-6e79ffcf897f' \
+--invoke-url='https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod' \
+--api-gateway-region='us-east-1' \
+--path-template='/notes' \
+--method='POST' \
+--body='{"content":"hello world cli test","attachment":"helloCLITest.jpg"}'
+
+```
+
+
+```
+npx aws-api-gateway-cli-test --username nqkhanh1998@gmail.com --password Passw0rd! --user-pool-id us-east-2_c7ZXkYHe7 --app-client-id 59j0tt0qci8dm9us7an226srsb --cognito-region us-east-2 --identity-pool-id us-east-2:a2415eac-5c7c-45b4-bbc0-6e79ffcf897f --invoke-url https://jcentwq22d.execute-api.us-east-1.amazonaws.com/prod --api-gateway-region us-east-1 --path-template /notes --method POST --body "{\"content\":\"hello world2\",\"attachment\":\"hello2.jpg\"}"
+
+```
+
+
+
+
+
+
+
 <hr>
+
 
 # Problem
 - 21/7 
@@ -271,14 +411,24 @@ Fix bằng cách xoá 1 vài bucket không quan trọng
 
 Fix bằng cách formatcode ở các file đó
 
+23/7 
 
+ Lỗi 403 
+![alt text](images/66.png)
+
+
+Có vẻ như mình đã config khi create identity pool
+Fix bằng cách xoá identity pool cũ và lập cái mới
+Thì sẽ có lỗi là role cũ đã tồn tại. 3 cách
+1. đặt tên role mới ( VD thêm số 2 sau)
+2. Vô config role lại
+3. xoá role cũ đi
+
+Mình đã xoá role cũ đi 
+
+![alt text](images/69.png)
+![alt text](images/67.png)
+![alt text](images/68.png)
+![alt text](images/70.png)
 
 <hr>
-
-
-
-
-
-
-
-
