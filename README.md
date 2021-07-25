@@ -448,7 +448,7 @@ Và  ``` source ``` là mã thông báo Stripe cho thẻ mà chúng tôi sẽ t�
 ![alt text](images/81.png)
 ![alt text](images/82.png)
 
-
+#### CORS in Serverless
 
 <hr>
 
