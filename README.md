@@ -450,6 +450,27 @@ Và  ``` source ``` là mã thông báo Stripe cho thẻ mà chúng tôi sẽ t�
 
 #### CORS in Serverless
 
+![alt text](images/83.png)
+![alt text](images/84.png)
+![alt text](images/85.png)
+![alt text](images/86.png)
+![alt text](images/87.png)
+![alt text](images/88.png)
+![alt text](images/89.png)
+
+#### Setting up a React app
+
+https://github.com/24hdev-khanhnoi/serverless-stack-client
+
+![alt text](images/90 .png)
+
+```
+npm install react-bootstrap@1.4.0 react-icons@3.11.0 --save
+npm install react-router-dom@5.2.0 --save
+```
+#### Configure AWS Amplify
+![alt text](images/91 .png)
+
 <hr>
 
 
